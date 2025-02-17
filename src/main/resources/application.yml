@@ -1,0 +1,25 @@
+server:
+  port: 8761  # Default Eureka Server port
+
+spring:
+  application:
+    name: discovery-server  # Name of this service
+
+# Eureka Server Configuration
+eureka:
+  instance:
+    hostname: localhost  # Change this if running on a different server
+
+  client:
+    register-with-eureka: false  # Eureka Server doesn't register itself
+    fetch-registry: false  # It doesn’t fetch the registry; only clients do
+
+  server:
+    enable-self-preservation: true  # Helps keep services registered if a temporary network issue occurs
+    eviction-interval-timer-in-ms: 60000  # Interval to remove dead services (60 seconds)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
